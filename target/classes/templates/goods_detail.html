@@ -39,18 +39,18 @@
             <td th:text="${#dates.format(goods.startDate, 'yyyy-MM-dd HH:mm:ss')}"></td>
         </tr>
         <tr>
-            <td id="seckillTip">
+            <td id="flashSaleTip">
                 <input type="hidden" id="remainSeconds" th:value="${remainSeconds}"/>
-                <span th:if="${seckillStatus eq 0}">秒杀倒计时：</span>
-                <span th:if="${seckillStatus eq 1}">秒杀进行中</span>
-                <span th:if="${seckillStatus eq 2}">秒杀已结束</span>
+                <span th:if="${flashSaleStatus eq 0}">秒杀倒计时：</span>
+                <span th:if="${flashSaleStatus eq 1}">秒杀进行中</span>
+                <span th:if="${flashSaleStatus eq 2}">秒杀已结束</span>
             </td>
             <td>
-                <span th:if="${seckillStatus eq 0}"><span id="countDown"
+                <span th:if="${flashSaleStatus eq 0}"><span id="countDown"
                                                           th:text="${remainSeconds}"></span>秒</span>
             </td>
             <td>
-                <form id="seckillForm" method="post" action="/seckill/do_seckill">
+                <form id="flashSaleForm" method="post" action="/flashSale/do_flashSale">
                     <button class="btn btn-primary btn-block" type="submit" id="buyButton">立即秒杀</button>
                     <input type="hidden" name="goodsId" th:value="${goods.id}"/>
                 </form>
@@ -62,7 +62,7 @@
         </tr>
         <tr>
             <td>秒杀价</td>
-            <td colspan="3" th:text="${goods.seckillPrice}"></td>
+            <td colspan="3" th:text="${goods.flashSalePrice}"></td>
         </tr>
         <tr>
             <td>库存数量</td>
@@ -91,10 +91,10 @@
             if (timeout) {
                 clearTimeout(timeout);
             }
-            $("#seckillTip").html("秒杀进行中");
+            $("#flashSaleTip").html("秒杀进行中");
         } else {//秒杀已经结束
 //            $("#buyButton").attr("disabled", true);
-            $("#seckillTip").html("秒杀已经结束");
+            $("#flashSaleTip").html("秒杀已经结束");
         }
     }
 

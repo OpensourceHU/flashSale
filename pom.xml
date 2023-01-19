@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.jesper</groupId>
-	<artifactId>jesper_seckill</artifactId>
+	<artifactId>jesper_flashSale</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
@@ -13,7 +13,7 @@
 		<version>1.5.8.RELEASE</version>
 	</parent>
 
-	<name>jesper_seckill</name>
+    <name>jesper_flashSale</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>

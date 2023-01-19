@@ -3,11 +3,6 @@
 ## 系统介绍
 本系统是使用SpringBoot开发的高并发限时抢购秒杀系统，除了实现基本的登录、查看商品列表、秒杀、下单等功能，项目中还针对高并发情况实现了系统缓存、降级和限流。
 
-## 开发工具
-IntelliJ IDEA + Navicat
-## 压测工具
-JMeter
-
 
 ## 开发技术
 前端技术 ：Bootstrap + jQuery
@@ -92,7 +87,7 @@ JMeter
 
 
 ## 关于项目运行的步骤
-1. 数据生成: seckill.sql
+1. 数据生成: SQL脚本跑一下
 2. 启动项目需要用到的组件Redis和RabbitMQ 推荐Docker启一下
 3. 运行启动类MainApplication.java
 4. 访问localhost:8080/login/to_login

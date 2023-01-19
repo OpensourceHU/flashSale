@@ -4,7 +4,7 @@ Navicat MySQL Data Transfer
 Source Server         : localhost
 Source Server Version : 50720
 Source Host           : localhost:3306
-Source Database       : seckill
+Source Database       : flashSale
 
 Target Server Type    : MYSQL
 Target Server Version : 50720
@@ -33,29 +33,36 @@ CREATE TABLE `sk_goods` (
 -- ----------------------------
 -- Records of sk_goods
 -- ----------------------------
-INSERT INTO `sk_goods` VALUES ('1', 'iphoneX', 'Apple/苹果iPhone X 全网通4G手机苹果X 10', '/img/iphonex.png', 'Apple/苹果iPhone X 全网通4G手机苹果X 10', '7788.00', '100');
-INSERT INTO `sk_goods` VALUES ('2', '华为 Mate 10', 'Huawei/华为 Mate 10 6G+128G 全网通4G智能手机', '/img/meta10.png', 'Huawei/华为 Mate 10 6G+128G 全网通4G智能手机', '4199.00', '50');
+INSERT INTO `sk_goods`
+VALUES ('1', 'iphoneX', 'Apple/苹果iPhone X 全网通4G手机苹果X 10', '/img/iphonex.png',
+        'Apple/苹果iPhone X 全网通4G手机苹果X 10', '7788.00', '100');
+INSERT INTO `sk_goods`
+VALUES ('2', '华为 Mate 10', 'Huawei/华为 Mate 10 6G+128G 全网通4G智能手机', '/img/meta10.png',
+        'Huawei/华为 Mate 10 6G+128G 全网通4G智能手机', '4199.00', '50');
 
 -- ----------------------------
--- Table structure for sk_goods_seckill
+-- Table structure for sk_goods_flashSale
 -- ----------------------------
-DROP TABLE IF EXISTS `sk_goods_seckill`;
-CREATE TABLE `sk_goods_seckill` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '秒杀商品id',
-  `goods_id` bigint(20) DEFAULT NULL COMMENT '商品id',
-  `seckill_price` decimal(10,2) DEFAULT '0.00' COMMENT '秒杀价',
-  `stock_count` int(11) DEFAULT NULL COMMENT '库存数量',
-  `start_date` datetime DEFAULT NULL COMMENT '秒杀开始时间',
-  `end_date` datetime DEFAULT NULL COMMENT '秒杀结束时间',
-  `version` int(11) DEFAULT NULL COMMENT '并发版本控制',
-  PRIMARY KEY (`id`)
+DROP TABLE IF EXISTS `sk_goods_flashSale`;
+CREATE TABLE `sk_goods_flashSale`
+(
+    `id`              bigint(20) NOT NULL AUTO_INCREMENT COMMENT '秒杀商品id',
+    `goods_id`        bigint(20) DEFAULT NULL COMMENT '商品id',
+    `flashSale_price` decimal(10, 2) DEFAULT '0.00' COMMENT '秒杀价',
+    `stock_count`     int(11) DEFAULT NULL COMMENT '库存数量',
+    `start_date`      datetime       DEFAULT NULL COMMENT '秒杀开始时间',
+    `end_date`        datetime       DEFAULT NULL COMMENT '秒杀结束时间',
+    `version`         int(11) DEFAULT NULL COMMENT '并发版本控制',
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of sk_goods_seckill
+-- Records of sk_goods_flashSale
 -- ----------------------------
-INSERT INTO `sk_goods_seckill` VALUES ('1', '1', '0.01', '8', '2018-05-22 17:22:52', '2018-05-22 18:23:00', '0');
-INSERT INTO `sk_goods_seckill` VALUES ('2', '2', '0.01', '8', '2018-04-29 22:56:10', '2018-05-01 22:56:15', '0');
+INSERT INTO `sk_goods_flashSale`
+VALUES ('1', '1', '0.01', '8', '2018-05-22 17:22:52', '2018-05-22 18:23:00', '0');
+INSERT INTO `sk_goods_flashSale`
+VALUES ('2', '2', '0.01', '8', '2018-04-29 22:56:10', '2018-05-01 22:56:15', '0');
 
 
 -- ----------------------------
