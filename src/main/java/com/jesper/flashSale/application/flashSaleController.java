@@ -41,85 +41,82 @@ public class flashSaleController implements InitializingBean {
   @Autowired
   flashSaleService flashSaleService;
 
-    @Autowired
-    RedisService redisService;
+  //做标记，判断该商品是否被处理过了
+  private final HashMap<Long, Boolean> localOverMap = new HashMap<Long, Boolean>();
+  @Autowired
+  RedisService redisService;
+  @Autowired
+  MQSender sender;
+  //基于令牌桶算法的限流实现类
+  RateLimiter rateLimiter = RateLimiter.create(10);
 
-    @Autowired
-    MQSender sender;
+  /**
+   * GET POST
+   * 1、GET幂等
+   * 2、POST，向服务端提交数据，不是幂等
+   * <p>
+   * 将同步下单改为异步下单
+   *
+   * @param model
+   * @param user
+   * @param goodsId
+   * @return
+   */
+  @RequestMapping(value = "/do_flashSale", method = RequestMethod.POST)
+  @ResponseBody
+  public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) {
 
-    //基于令牌桶算法的限流实现类
-    RateLimiter rateLimiter = RateLimiter.create(10);
-
-    //做标记，判断该商品是否被处理过了
-    private final HashMap<Long, Boolean> localOverMap = new HashMap<Long, Boolean>();
-
-    /**
-     * GET POST
-     * 1、GET幂等
-     * 2、POST，向服务端提交数据，不是幂等
-     * <p>
-     * 将同步下单改为异步下单
-     *
-     * @param model
-     * @param user
-     * @param goodsId
-     * @return
-     */
-    @RequestMapping(value = "/do_flashSale", method = RequestMethod.POST)
-    @ResponseBody
-    public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) {
-
-        if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
-            return  Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
-        }
-
-        if (user == null) {
-            return Result.error(CodeMsg.SESSION_ERROR);
-        }
-        model.addAttribute("user", user);
-        //内存标记，减少redis访问
-        boolean over = localOverMap.get(goodsId);
-        if (over) {
-          return Result.error(CodeMsg.flashSale_OVER);
-        }
-        //预减库存
-        long stock = redisService.decr(GoodsKey.getGoodsStock, "" + goodsId);//10
-        if (stock < 0) {
-            afterPropertiesSet();
-            long stock2 = redisService.decr(GoodsKey.getGoodsStock, "" + goodsId);//10
-            if(stock2 < 0){
-                localOverMap.put(goodsId, true);
-              return Result.error(CodeMsg.flashSale_OVER);
-            }
-        }
-        //判断重复秒杀
-      flashSaleOrder order = orderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
-        if (order != null) {
-          return Result.error(CodeMsg.REPEATE_flashSale);
-        }
-        //入队
-      flashSaleMessage message = new flashSaleMessage();
-        message.setUser(user);
-      message.setGoodsId(goodsId);
-      sender.sendflashSaleMessage(message);
-        return Result.success(0);//排队中
+    if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
+      return Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
     }
 
-    /**
-     * 系统初始化,将商品信息加载到redis和本地内存
-     */
-    @Override
-    public void afterPropertiesSet() {
-        List<GoodsVo> goodsVoList = goodsService.listGoodsVo();
-        if (goodsVoList == null) {
-            return;
-        }
-        for (GoodsVo goods : goodsVoList) {
-            redisService.set(GoodsKey.getGoodsStock, "" + goods.getId(), goods.getStockCount());
-            //初始化商品都是没有处理过的
-            localOverMap.put(goods.getId(), false);
-        }
+    if (user == null) {
+      return Result.error(CodeMsg.SESSION_ERROR);
     }
+    model.addAttribute("user", user);
+    //内存标记，减少redis访问
+    boolean over = localOverMap.get(goodsId);
+    if (over) {
+      return Result.error(CodeMsg.flashSale_OVER);
+    }
+    //预减库存
+    long stock = redisService.decr(GoodsKey.getGoodsStock, "" + goodsId);//10
+    if (stock < 0) {
+      afterPropertiesSet();
+      long stock2 = redisService.decr(GoodsKey.getGoodsStock, "" + goodsId);//10
+      if (stock2 < 0) {
+        localOverMap.put(goodsId, true);
+        return Result.error(CodeMsg.flashSale_OVER);
+      }
+    }
+    //判断重复秒杀
+    flashSaleOrder order = orderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
+    if (order != null) {
+      return Result.error(CodeMsg.REPEATE_flashSale);
+    }
+    //入队
+    flashSaleMessage message = new flashSaleMessage();
+    message.setUser(user);
+    message.setGoodsId(goodsId);
+    sender.sendflashSaleMessage(message);
+    return Result.success(0);//排队中
+  }
+
+  /**
+   * 系统初始化,将商品信息加载到redis和本地内存
+   */
+  @Override
+  public void afterPropertiesSet() {
+    List<GoodsVo> goodsVoList = goodsService.listGoodsVo();
+    if (goodsVoList == null) {
+      return;
+    }
+    for (GoodsVo goods : goodsVoList) {
+      redisService.set(GoodsKey.getGoodsStock, "" + goods.getId(), goods.getStockCount());
+      //初始化商品都是没有处理过的
+      localOverMap.put(goods.getId(), false);
+    }
+  }
 
   /**
    * orderId：成功

@@ -8,18 +8,20 @@ import java.util.Date;
 public class flashSaleGoods {
   private Long id;
   private Long goodsId;
+  //库存数
   private Integer stockCount;
+  //版本号
+  private int version;
   private Date startDate;
   private Date endDate;
-  private int version;
 
   public int getVersion() {
     return version;
   }
 
-    public void setVersion(int version) {
-        this.version = version;
-    }
+  public void setVersion(int version) {
+    this.version = version;
+  }
 
     public Long getId() {
         return id;

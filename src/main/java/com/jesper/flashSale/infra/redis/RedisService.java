@@ -2,7 +2,6 @@ package com.jesper.flashSale.infra.redis;
 
 import com.alibaba.fastjson.JSON;
 import com.jesper.flashSale.infra.redis.keys.KeyPrefix;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -13,8 +12,7 @@ import redis.clients.jedis.JedisPool;
 @Service
 public class RedisService {
 
-  @Autowired
-  JedisPool jedisPool;
+  JedisPool jedisPool = RedisPoolFactory.getJedisPool();
 
   public static <T> String beanToString(T value) {
     if (value == null) {

@@ -4,12 +4,9 @@ package com.jesper.flashSale.infra.redis.keys;
  * Created by OpensourceHU on 2021/5/21.
  */
 public class UserKey extends BasePrefix {
-
+    //过期时间 单位: 秒
     public static final int TOKEN_EXPIRE = 3600*24 *2;//默认两天
 
-    /**
-     * 防止被外面实例化
-     */
     private UserKey(int expireSeconds, String prefix) {
         super(expireSeconds, prefix);
     }

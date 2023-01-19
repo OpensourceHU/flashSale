@@ -34,11 +34,12 @@ public class OrderService {
     }
 
     /**
-     * 因为要同时分别在订单详情表和秒杀订单表都新增一条数据，所以要保证两个操作是一个事物
+     * 因为要同时分别在订单详情表和秒杀订单表都新增一条数据，加注解保证一致性
      */
     @Transactional
     public OrderInfo createOrder(User user, GoodsVo goods) {
-        OrderInfo orderInfo = new OrderInfo();
+       //OrderInfo Table
+      OrderInfo orderInfo = new OrderInfo();
         orderInfo.setCreateDate(new Date());
         orderInfo.setDeliveryAddrId(0L);
         orderInfo.setGoodsCount(1);
@@ -49,16 +50,15 @@ public class OrderService {
         orderInfo.setStatus(0);
         orderInfo.setUserId(user.getId());
         orderMapper.insert(orderInfo);
-
-        flashSaleOrder flashSaleOrder = new flashSaleOrder();
+        //flashSaleOrder
+      flashSaleOrder flashSaleOrder = new flashSaleOrder();
         flashSaleOrder.setGoodsId(goods.getId());
         flashSaleOrder.setOrderId(orderInfo.getId());
         flashSaleOrder.setUserId(user.getId());
         orderMapper.insertflashSaleOrder(flashSaleOrder);
-
-        redisService.set(OrderKey.getflashSaleOrderByUidGid,
+        //refresh cache
+      redisService.set(OrderKey.getflashSaleOrderByUidGid,
             "" + user.getId() + "_" + goods.getId(), flashSaleOrder);
-
         return orderInfo;
     }
 

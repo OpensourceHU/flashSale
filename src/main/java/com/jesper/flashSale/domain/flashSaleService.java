@@ -25,7 +25,7 @@ public class flashSaleService {
     @Autowired
     RedisService redisService;
 
-    //保证这三个操作，减库存 下订单 写入秒杀订单是一个事物
+    //保证这三个操作，减库存 下订单 写入秒杀订单是一个事务
     @Transactional
     public OrderInfo flashSale(User user, GoodsVo goods) {
         //减库存

@@ -23,14 +23,14 @@ public interface GoodsMapper {
       "#{goodsId}")
   GoodsVo getGoodsVoByGoodsId(@Param("goodsId") long goodsId);
 
-  //stock_count > 0 和 版本号实现乐观锁 防止超卖
+  //stock_count > 0 和 版本号实(版本号最新)现乐观锁 防止超卖
   @Update("update sk_goods_flashSale set stock_count = stock_count - 1, version= version + 1 " +
       "where goods_id = #{goodsId} and stock_count > 0 and version = #{version}")
   int reduceStockByVersion(flashSaleGoods flashSaleGoods);
 
   // 获取最新版本号
   @Select("select version from sk_goods_flashSale  where goods_id = #{goodsId}")
-    int getVersionByGoodsId(@Param("goodsId") long goodsId);
+  int getVersionByGoodsId(@Param("goodsId") long goodsId);
 
 
 }

@@ -5,7 +5,7 @@
 
 
 ## 开发技术
-前端技术 ：Bootstrap + jQuery
+前端技术 ：Bootstrap + jQuery(ajax)
 
 后端技术 ：SpringBoot + MyBatis + MySQL(Druid连接)
 
