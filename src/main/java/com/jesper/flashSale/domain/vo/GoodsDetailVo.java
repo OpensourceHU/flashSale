@@ -27,19 +27,19 @@ public class GoodsDetailVo {
     this.remainSeconds = remainSeconds;
   }
 
-    public GoodsVo getGoods() {
-        return goods;
-    }
+  public GoodsVo getGoods() {
+    return goods;
+  }
 
-    public void setGoods(GoodsVo goods) {
-        this.goods = goods;
-    }
+  public void setGoods(GoodsVo goods) {
+    this.goods = goods;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public void setUser(User user) {
+    this.user = user;
+  }
 }

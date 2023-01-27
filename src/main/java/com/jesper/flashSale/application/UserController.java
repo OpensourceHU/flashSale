@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    UserService userService;
+  @Autowired
+  UserService userService;
 
-    @Autowired
-    RedisService redisService;
+  @Autowired
+  RedisService redisService;
 
-    @RequestMapping("/info")
-    @ResponseBody
-    public Result<User> info(Model model, User user) {
-        return Result.success(user);
-    }
+  @RequestMapping("/info")
+  @ResponseBody
+  public Result<User> info(Model model, User user) {
+    return Result.success(user);
+  }
 }

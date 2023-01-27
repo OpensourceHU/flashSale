@@ -5,9 +5,9 @@ package com.jesper.flashSale.infra.redis.keys;
  */
 public class OrderKey extends BasePrefix {
 
-    public OrderKey(String prefix) {
-        super(prefix);
-    }
-
   public static OrderKey getflashSaleOrderByUidGid = new OrderKey("flashSale");
+
+  public OrderKey(String prefix) {
+    super(prefix);
+  }
 }

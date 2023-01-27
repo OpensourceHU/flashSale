@@ -18,13 +18,13 @@ public class flashSaleMessage {
 
   public void setUser(User user) {
     this.user = user;
-    }
+  }
 
-    public long getGoodsId() {
-        return goodsId;
-    }
+  public long getGoodsId() {
+    return goodsId;
+  }
 
-    public void setGoodsId(long goodsId) {
-        this.goodsId = goodsId;
-    }
+  public void setGoodsId(long goodsId) {
+    this.goodsId = goodsId;
+  }
 }

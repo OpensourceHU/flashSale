@@ -18,49 +18,49 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class OrderService {
 
-    @Autowired
-    OrderMapper orderMapper;
+  @Autowired
+  OrderMapper orderMapper;
 
-    @Autowired
-    RedisService redisService;
+  @Autowired
+  RedisService redisService;
 
-    public flashSaleOrder getOrderByUserIdGoodsId(long userId, long goodsId) {
-        return redisService.get(OrderKey.getflashSaleOrderByUidGid, "" + userId + "_" + goodsId,
-            flashSaleOrder.class);
-    }
+  public flashSaleOrder getOrderByUserIdGoodsId(long userId, long goodsId) {
+    return redisService.get(OrderKey.getflashSaleOrderByUidGid, "" + userId + "_" + goodsId,
+        flashSaleOrder.class);
+  }
 
-    public OrderInfo getOrderById(long orderId) {
-        return orderMapper.getOrderById(orderId);
-    }
+  public OrderInfo getOrderById(long orderId) {
+    return orderMapper.getOrderById(orderId);
+  }
 
-    /**
-     * 因为要同时分别在订单详情表和秒杀订单表都新增一条数据，加注解保证一致性
-     */
-    @Transactional
-    public OrderInfo createOrder(User user, GoodsVo goods) {
-       //OrderInfo Table
-      OrderInfo orderInfo = new OrderInfo();
-        orderInfo.setCreateDate(new Date());
-        orderInfo.setDeliveryAddrId(0L);
-        orderInfo.setGoodsCount(1);
-        orderInfo.setGoodsId(goods.getId());
-        orderInfo.setGoodsName(goods.getGoodsName());
-        orderInfo.setGoodsPrice(goods.getGoodsPrice());
-        orderInfo.setOrderChannel(1);
-        orderInfo.setStatus(0);
-        orderInfo.setUserId(user.getId());
-        orderMapper.insert(orderInfo);
-        //flashSaleOrder
-      flashSaleOrder flashSaleOrder = new flashSaleOrder();
-        flashSaleOrder.setGoodsId(goods.getId());
-        flashSaleOrder.setOrderId(orderInfo.getId());
-        flashSaleOrder.setUserId(user.getId());
-        orderMapper.insertflashSaleOrder(flashSaleOrder);
-        //refresh cache
-      redisService.set(OrderKey.getflashSaleOrderByUidGid,
-            "" + user.getId() + "_" + goods.getId(), flashSaleOrder);
-        return orderInfo;
-    }
+  /**
+   * 因为要同时分别在订单详情表和秒杀订单表都新增一条数据，加注解保证一致性
+   */
+  @Transactional
+  public OrderInfo createOrder(User user, GoodsVo goods) {
+    //OrderInfo Table
+    OrderInfo orderInfo = new OrderInfo();
+    orderInfo.setCreateDate(new Date());
+    orderInfo.setDeliveryAddrId(0L);
+    orderInfo.setGoodsCount(1);
+    orderInfo.setGoodsId(goods.getId());
+    orderInfo.setGoodsName(goods.getGoodsName());
+    orderInfo.setGoodsPrice(goods.getGoodsPrice());
+    orderInfo.setOrderChannel(1);
+    orderInfo.setStatus(0);
+    orderInfo.setUserId(user.getId());
+    orderMapper.insert(orderInfo);
+    //flashSaleOrder
+    flashSaleOrder flashSaleOrder = new flashSaleOrder();
+    flashSaleOrder.setGoodsId(goods.getId());
+    flashSaleOrder.setOrderId(orderInfo.getId());
+    flashSaleOrder.setUserId(user.getId());
+    orderMapper.insertflashSaleOrder(flashSaleOrder);
+    //refresh cache
+    redisService.set(OrderKey.getflashSaleOrderByUidGid,
+        "" + user.getId() + "_" + goods.getId(), flashSaleOrder);
+    return orderInfo;
+  }
 
 
 }

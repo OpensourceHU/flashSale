@@ -15,8 +15,8 @@ public class MQSender {
 
   private static final Logger log = LoggerFactory.getLogger(MQSender.class);
 
-    @Autowired
-    AmqpTemplate amqpTemplate;
+  @Autowired
+  AmqpTemplate amqpTemplate;
 
 //    public void send(Object message){
 //        String msg = RedisService.beanToString(message);
@@ -24,12 +24,12 @@ public class MQSender {
 //        amqpTemplate.convertAndSend(MQConfig.QUEUE, message);
 //    }
 
-    	public void sendTopic(Object message) {
-		String msg = RedisService.beanToString(message);
-		log.info("send topic message:"+msg);
-		amqpTemplate.convertAndSend(MQConfig.TOPIC_EXCHANGE, "topic.key1", msg+"1");
-		amqpTemplate.convertAndSend(MQConfig.TOPIC_EXCHANGE, "topic.key2", msg+"2");
-	}
+  public void sendTopic(Object message) {
+    String msg = RedisService.beanToString(message);
+    log.info("send topic message:" + msg);
+    amqpTemplate.convertAndSend(MQConfig.TOPIC_EXCHANGE, "topic.key1", msg + "1");
+    amqpTemplate.convertAndSend(MQConfig.TOPIC_EXCHANGE, "topic.key2", msg + "2");
+  }
 
   public void sendflashSaleMessage(flashSaleMessage message) {
     String msg = RedisService.beanToString(message);

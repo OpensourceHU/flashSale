@@ -9,16 +9,16 @@ import com.jesper.flashSale.infra.db.enums.result_code.CodeMsg;
  */
 public class GlobalException extends RuntimeException {
 
-    private static final long servialVersionUID = 1L;
+  private static final long servialVersionUID = 1L;
 
-    private final CodeMsg codeMsg;
+  private final CodeMsg codeMsg;
 
-    public GlobalException(CodeMsg codeMsg) {
-        super(codeMsg.toString());
-        this.codeMsg = codeMsg;
-    }
+  public GlobalException(CodeMsg codeMsg) {
+    super(codeMsg.toString());
+    this.codeMsg = codeMsg;
+  }
 
-    public CodeMsg getCodeMsg() {
-        return codeMsg;
-    }
+  public CodeMsg getCodeMsg() {
+    return codeMsg;
+  }
 }

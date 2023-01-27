@@ -19,51 +19,50 @@ import org.springframework.stereotype.Service;
 @Service
 public class MQReceiver {
 
-    private static final Logger log = LoggerFactory.getLogger(MQReceiver.class);
+  private static final Logger log = LoggerFactory.getLogger(MQReceiver.class);
 
+  @Autowired
+  RedisService redisService;
 
-    @Autowired
-    RedisService redisService;
+  @Autowired
+  GoodsService goodsService;
 
-    @Autowired
-    GoodsService goodsService;
-
-    @Autowired
-    OrderService orderService;
+  @Autowired
+  OrderService orderService;
 
   @Autowired
   flashSaleService flashSaleService;
 
-    @RabbitListener(queues=MQConfig.QUEUE)
-    public void receive(String message){
-        log.info("receive message:"+message);
-      flashSaleMessage m = RedisService.stringToBean(message, flashSaleMessage.class);
-      User user = m.getUser();
-        long goodsId = m.getGoodsId();
+  @RabbitListener(queues = MQConfig.QUEUE)
+  public void receive(String message) {
+    log.info("receive message:" + message);
+    flashSaleMessage m = RedisService.stringToBean(message, flashSaleMessage.class);
+    User user = m.getUser();
+    long goodsId = m.getGoodsId();
 
-        GoodsVo goodsVo = goodsService.getGoodsVoByGoodsId(goodsId);
-        int stock = goodsVo.getStockCount();
-        if(stock <= 0){
-            return;
-        }
-
-        //判断重复秒杀
-      flashSaleOrder order = orderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
-        if(order != null) {
-            return;
-        }
-
-        //减库存 下订单 写入秒杀订单
-      flashSaleService.flashSale(user, goodsVo);
+    GoodsVo goodsVo = goodsService.getGoodsVoByGoodsId(goodsId);
+    int stock = goodsVo.getStockCount();
+    if (stock <= 0) {
+      return;
     }
 
-    @RabbitListener(queues = MQConfig.TOPIC_QUEUE1)
-    public void receiveTopic1(String message) {
-        log.info(" topic  queue1 message:" + message);
+    //判断重复秒杀
+    flashSaleOrder order = orderService.getOrderByUserIdGoodsId(user.getId(), goodsId);
+    if (order != null) {
+      return;
     }
 
-    @RabbitListener(queues = MQConfig.TOPIC_QUEUE2)
-    public void receiveTopic2(String message) {
-        log.info(" topic  queue2 message:" + message);
-    }
+    //减库存 下订单 写入秒杀订单
+    flashSaleService.flashSale(user, goodsVo);
+  }
+
+  @RabbitListener(queues = MQConfig.TOPIC_QUEUE1)
+  public void receiveTopic1(String message) {
+    log.info(" topic  queue1 message:" + message);
+  }
+
+  @RabbitListener(queues = MQConfig.TOPIC_QUEUE2)
+  public void receiveTopic2(String message) {
+    log.info(" topic  queue2 message:" + message);
+  }
 }

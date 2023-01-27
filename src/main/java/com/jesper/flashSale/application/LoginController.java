@@ -20,23 +20,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/login")
 public class LoginController {
 
-    private static final Logger log = LoggerFactory.getLogger(LoginController.class);
+  private static final Logger log = LoggerFactory.getLogger(LoginController.class);
 
-    @Autowired
-    UserService userService;
+  @Autowired
+  UserService userService;
 
 
-    @RequestMapping("/to_login")
-    public String toLogin() {
-        return "login";
-    }
+  @RequestMapping("/to_login")
+  public String toLogin() {
+    return "login";
+  }
 
-    @RequestMapping("/do_login")
-    @ResponseBody
-    public Result<String> doLogin(HttpServletResponse response, @Valid LoginVo loginVo) {//加入JSR303参数校验
-        log.info(loginVo.toString());
-        String token = userService.login(response, loginVo);
-        return Result.success(token);
-    }
+  @RequestMapping("/do_login")
+  @ResponseBody
+  public Result<String> doLogin(HttpServletResponse response,
+                                @Valid LoginVo loginVo) {//加入JSR303参数校验
+    log.info(loginVo.toString());
+    String token = userService.login(response, loginVo);
+    return Result.success(token);
+  }
 
 }

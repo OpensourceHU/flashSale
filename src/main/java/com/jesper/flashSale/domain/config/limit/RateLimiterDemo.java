@@ -10,28 +10,28 @@ import java.util.concurrent.Executors;
  * Created by OpensourceHU on 2021/5/31.
  */
 public class RateLimiterDemo {
-    public static void main(String[] args) {
-        RateLimiter rateLimiter = RateLimiter.create(2);
-        List<Runnable> tasks = new ArrayList<Runnable>();
-        for(int i = 0;i < 10; i++){
-            tasks.add(new UserRequest(i));
-        }
-        ExecutorService threadPool = Executors.newCachedThreadPool();
-        for (Runnable runnable : tasks){
-            System.out.println("等待时间：" + rateLimiter.acquire());
-            threadPool.execute(runnable);
-        }
+  public static void main(String[] args) {
+    RateLimiter rateLimiter = RateLimiter.create(2);
+    List<Runnable> tasks = new ArrayList<Runnable>();
+    for (int i = 0; i < 10; i++) {
+      tasks.add(new UserRequest(i));
+    }
+    ExecutorService threadPool = Executors.newCachedThreadPool();
+    for (Runnable runnable : tasks) {
+      System.out.println("等待时间：" + rateLimiter.acquire());
+      threadPool.execute(runnable);
+    }
+  }
+
+  private static class UserRequest implements Runnable {
+    private final int id;
+
+    public UserRequest(int id) {
+      this.id = id;
     }
 
-    private static class UserRequest implements Runnable {
-        private final int id;
-
-        public UserRequest(int id) {
-            this.id = id;
-        }
-
-        public void run() {
-            System.out.println(id);
-        }
+    public void run() {
+      System.out.println(id);
     }
+  }
 }

@@ -32,17 +32,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/flashSale")
 public class flashSaleController implements InitializingBean {
 
-  @Autowired
-  GoodsService goodsService;
-
-  @Autowired
-  OrderService orderService;
-
-  @Autowired
-  flashSaleService flashSaleService;
-
   //做标记，判断该商品是否被处理过了
   private final HashMap<Long, Boolean> localOverMap = new HashMap<Long, Boolean>();
+  @Autowired
+  GoodsService goodsService;
+  @Autowired
+  OrderService orderService;
+  @Autowired
+  flashSaleService flashSaleService;
   @Autowired
   RedisService redisService;
   @Autowired
@@ -65,7 +62,7 @@ public class flashSaleController implements InitializingBean {
   @RequestMapping(value = "/do_flashSale", method = RequestMethod.POST)
   @ResponseBody
   public Result<Integer> list(Model model, User user, @RequestParam("goodsId") long goodsId) {
-
+    //令牌桶限流
     if (!rateLimiter.tryAcquire(1000, TimeUnit.MILLISECONDS)) {
       return Result.error(CodeMsg.ACCESS_LIMIT_REACHED);
     }
