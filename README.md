@@ -90,5 +90,4 @@
 1. 数据生成: SQL脚本跑一下
 2. 启动项目需要用到的组件Redis和RabbitMQ 推荐Docker启一下
 3. 运行启动类MainApplication.java
-4. 访问localhost:8080/login/to_login
-5. 登录的用户名是18181818181，密码是12345
+4. 访问localhost:8080/login/to_login (accountID:18181818181,passwd:12345)
