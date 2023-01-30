@@ -51,7 +51,6 @@ public class flashSaleController implements InitializingBean {
    * GET POST
    * 1、GET幂等
    * 2、POST，向服务端提交数据，不是幂等
-   * <p>
    * 将同步下单改为异步下单
    *
    * @param model
@@ -95,7 +94,7 @@ public class flashSaleController implements InitializingBean {
     flashSaleMessage message = new flashSaleMessage();
     message.setUser(user);
     message.setGoodsId(goodsId);
-    sender.sendflashSaleMessage(message);
+    sender.sendFlashSaleMessage(message);
     return Result.success(0);//排队中
   }
 

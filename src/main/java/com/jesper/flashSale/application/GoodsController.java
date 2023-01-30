@@ -45,7 +45,7 @@ public class GoodsController {
   ThymeleafViewResolver thymeleafViewResolver;
 
   /**
-   * 商品列表页面
+   * 商品列表页面  没做缓存版本
    * QPS:433
    * 1000 * 10
    */
@@ -77,7 +77,7 @@ public class GoodsController {
 
 
   /**
-   * 商品详情页面
+   * 商品详情页面  走缓存
    */
   @RequestMapping(value = "/to_detail2/{goodsId}", produces = "text/html")
   @ResponseBody
@@ -144,7 +144,7 @@ public class GoodsController {
 
     int flashSaleStatus = 0;
     int remainSeconds = 0;
-
+    //TODO: 这块逻辑前端应该冗余一份 优先在前端进行判断后再把请求放进来
     if (now < startTime) {//秒杀还没开始，倒计时
       flashSaleStatus = 0;
       remainSeconds = (int) ((startTime - now) / 1000);

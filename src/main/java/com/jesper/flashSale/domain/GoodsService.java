@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 public class GoodsService {
 
   //乐观锁冲突最大重试次数
+  //todo: 这种业务相关的常量 最好是抽出来作配置文件 需要时读取 硬编码不方便修改
   private static final int DEFAULT_MAX_RETRIES = 5;
 
   @Autowired
@@ -38,7 +39,7 @@ public class GoodsService {
   }
 
   /**
-   * 减少库存，每次减一
+   * 写DB 减少库存(乐观锁)
    *
    * @return
    */

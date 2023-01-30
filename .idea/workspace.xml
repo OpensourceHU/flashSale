@@ -4,70 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f27faa75-1c26-49ec-b5f4-e061ace2f8bc" name="Changes" comment="singleton">
+    <list default="true" id="f27faa75-1c26-49ec-b5f4-e061ace2f8bc" name="Changes" comment="format code">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/MailUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/seckill.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/seckill.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/MainApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/MainApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/GoodsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/GoodsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/flashSaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/application/flashSaleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/config/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/config/limit/RateLimiterDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/config/limit/RateLimiterDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/flashSaleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/flashSaleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/GoodsDetailVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/GoodsDetailVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/GoodsVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/GoodsVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/LoginVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/LoginVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/OrderDetailVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/vo/OrderDetailVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/exception/GlobalException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/exception/GlobalException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/exception/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/result_code/CodeMsg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/result_code/CodeMsg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/result_code/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/enums/result_code/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/mapper/UserMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/Goods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/Goods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/OrderInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/OrderInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/flashSaleGoods.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/flashSaleGoods.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/flashSaleOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/db/pojos/flashSaleOrder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/MQConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/MQConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/MQReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/MQReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/GoodsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/domain/GoodsService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/MQSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/MQSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/flashSaleMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/rabbitmq/flashSaleMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/RedisConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/BasePrefix.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/BasePrefix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/GoodsKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/GoodsKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/OrderKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/OrderKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/UserKey.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/redis/keys/UserKey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/DBUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/DBUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/MD5Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/MD5Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/UUIDUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/UUIDUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/UserUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/UserUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/ValidatorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/util/ValidatorUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/validator/IsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/validator/IsMobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/validator/IsMobileValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jesper/flashSale/infra/utils/validator/IsMobileValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-theme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap-theme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/css/bootstrap.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap/fonts/glyphicons-halflings-regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/bootstrap/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/goods_detail.htm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/goods_detail.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/order_detail.htm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/order_detail.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goods_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goods_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/goods_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/goods_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/hello.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/hello.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/order_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/order_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/seckill_fail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/seckill_fail.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -109,7 +66,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Admin/dev/src/java/springboot-flashSale",
+    "last_opened_file_path": "C:/Users/Admin/dev/src/java/JavaDemos",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -121,6 +78,11 @@
     "settings.editor.selected.configurable": "MavenSettings",
     "spring.configuration.checksum": "fa5b05bc8a2087a5064398d5e4b425c4",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -220,7 +182,8 @@
       <workItem from="1673926694061" duration="600000" />
       <workItem from="1674054193283" duration="7356000" />
       <workItem from="1674112250079" duration="6449000" />
-      <workItem from="1674702125330" duration="8012000" />
+      <workItem from="1674702125330" duration="9693000" />
+      <workItem from="1674986427147" duration="10330000" />
     </task>
     <task id="LOCAL-00001" summary="use DDD to refactor">
       <created>1673167835546</created>
@@ -250,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1674128298331</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="format code">
+      <created>1674810932774</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1674810932774</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,7 +244,8 @@
     <MESSAGE value="use DDD to refactor" />
     <MESSAGE value="rename" />
     <MESSAGE value="singleton" />
-    <option name="LAST_COMMIT_MESSAGE" value="singleton" />
+    <MESSAGE value="format code" />
+    <option name="LAST_COMMIT_MESSAGE" value="format code" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
